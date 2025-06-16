@@ -1,5 +1,6 @@
 import AppHeader from "@/components/header/app.header";
 import ThemeRegistry from "@/components/theme-registry/theme.registry";
+import { Container } from "@mui/material";
 
 export default function RootLayout({
   children,
@@ -11,7 +12,7 @@ export default function RootLayout({
       <body>
         <ThemeRegistry>
           <AppHeader />
-          {children}
+          <Container>{children}</Container>
         </ThemeRegistry>
       </body>
     </html>
