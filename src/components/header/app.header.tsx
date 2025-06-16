@@ -182,7 +182,7 @@ export default function AppHeader() {
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}
             >
-              SOUND CLOUND
+              SOUND CLOUD
             </Typography>
             <Search>
               <SearchIconWrapper>
