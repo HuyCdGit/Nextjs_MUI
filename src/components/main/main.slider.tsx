@@ -6,16 +6,20 @@ import { Settings } from "react-slick";
 import { Box, Button } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import { Margin } from "@mui/icons-material";
-const MainSlider = () => {
+interface Iprops {
+  data: ItrackTop[];
+}
+const MainSlider = (props: Iprops) => {
+  const { data } = props;
   function NextArrow(props: any) {
     return (
       <Button
-        variant="outlined"
+        color="inherit"
+        variant="contained"
         sx={{
           position: "absolute",
           right: 0,
-          top: "50%",
+          top: "30%",
           minWidth: 30,
           width: 35,
           zIndex: 2,
@@ -30,11 +34,12 @@ const MainSlider = () => {
   const PrevArrow = (props: any) => {
     return (
       <Button
-        variant="outlined"
+        color="inherit"
+        variant="contained"
         sx={{
           position: "absolute",
           left: 0,
-          top: "50%",
+          top: "30%",
           minWidth: 30,
           width: 35,
           zIndex: 2,
@@ -60,38 +65,30 @@ const MainSlider = () => {
     <Box
       sx={{
         margin: "0 50px",
-        ".abc": { padding: "0 10px" },
-        h3: { border: "1px solid #ccc", padding: "20px", height: "200px" },
+        ".track": {
+          padding: "0 10px",
+          img: {
+            height: 150,
+            width: 150,
+          },
+        },
+        h3: {
+          border: "1px solid #ccc",
+          padding: "20px",
+          height: "200px",
+        },
       }}
     >
       <Slider {...settings}>
-        <div className="abc">
-          <h3>Track1</h3>
-        </div>
-        <div className="abc">
-          <h3>Track2</h3>
-        </div>
-        <div className="abc">
-          <h3>Track3</h3>
-        </div>
-        <div className="abc">
-          <h3>Track4</h3>
-        </div>
-        <div className="abc">
-          <h3>Track5</h3>
-        </div>
-        <div className="abc">
-          <h3>Track6</h3>
-        </div>
-        <div className="abc">
-          <h3>Track7</h3>
-        </div>
-        <div className="abc">
-          <h3>Track8</h3>
-        </div>
-        <div className="abc">
-          <h3>Track9</h3>
-        </div>
+        {data.map((items) => (
+          <div className="track" key={"track._id"}>
+            <img
+              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}images/${items.imgUrl}`}
+            />
+            <h4>{items.title}</h4>
+            <h5>{items.description}</h5>
+          </div>
+        ))}
       </Slider>
     </Box>
   );
